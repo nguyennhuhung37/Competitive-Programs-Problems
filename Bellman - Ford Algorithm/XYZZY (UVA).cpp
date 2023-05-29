@@ -37,7 +37,7 @@ bool hasPathBFS(int s, int f){
 
 bool BellmanFord(int s, int f){
     fill(dist, dist + (n+1), -INF);
-    dist[s] = 100;
+    dist[1] = 100;
     for(int i = 0; i < n-1; i++){
         for(auto edge : graph){
             int u = edge.first;
@@ -50,7 +50,7 @@ bool BellmanFord(int s, int f){
     for(auto edge : graph){
         int u = edge.first;
         int v = edge.second;
-        if(dist[u] > 0 && dist[u] + value[v] > dist[v] && hasPathBFS(u, v)){
+        if(dist[u] > 0 && dist[u] + value[v] > dist[v] && hasPathBFS(u, f)){
             return true;
         }
     }
@@ -58,7 +58,7 @@ bool BellmanFord(int s, int f){
 }
 int main(){
     ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
-    while(cin >> n && n != -1)
+    while(cin >> n, n != -1)
     {
         graph.clear();
         for(int u = 1; u <= n; u++){
@@ -69,7 +69,7 @@ int main(){
             }
         }
         bool canGo = BellmanFord(1, n);
-        cout << (canGo ? "winable" : "hopeless") << endl;
+        cout << (canGo ? "winnable" : "hopeless") << endl;
     }
     return 0;
 }
