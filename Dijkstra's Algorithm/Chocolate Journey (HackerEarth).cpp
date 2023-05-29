@@ -51,8 +51,9 @@ int main() {
     Dijkstra(B, distB);
     int ans = inf;
     for(int i = 1; i <= k; i++){
-        if(distB[i] <= x){
-            ans = min(ans, distA[i] + distB[i]);
+        int tmp = city[i];
+        if(distB[tmp] <= x){
+            ans = min(ans, distA[tmp] + distB[tmp]);
         }
     }
     if(ans == inf) cout << -1;
